@@ -1,0 +1,42 @@
+{% load i18n %}
+<h1>INDEX</h1>
+
+<br/> 
+Conteúdo normal do site...
+<br/>
+
+{% if user.is_authenticated %}
+    Se desejar mostrar algo com o usuario logado em QUALQUER template...
+    <br />
+    <a href="/dashboard/">Painel do Cliente</a>
+    <br />
+    <a href="/logoff/">Clique aqui para Sair</a>
+    <br />
+{% endif %}
+
+<a href="/login/">Clique para fazer o login</a>
+
+<a href="/cadastro/">Cadastrar!</a>
+
+<a href="#" onclick="document.setLangEnglish.submit();return false;">English</a>
+<form name="setLangEnglish" action="/i18n/setlang/" method="POST">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="/" />
+    <input type="hidden" name="language" value="en" />
+</form>
+
+<a href="#" onclick="document.setLangPortugues.submit();return false;">Português</a>
+<form name="setLangPortugues" action="/i18n/setlang/" method="POST">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="/" />
+    <input type="hidden" name="language" value="pt-br" />
+</form>
+
+<br />
+Tradução vinda do Django: {{ recado}}
+<br />
+Tradução direto no Template: {% trans "Olá turma do mal!" %}
+<br />
+Tradução direto no Template (Bloco): {% blocktrans %} Esse é o bloco de conteúdo!{% endblocktrans %}
+<br />
+

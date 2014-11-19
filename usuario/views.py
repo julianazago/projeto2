@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-from usuario.forms import UsuarioForm, LoginForm, cadastroForm
+from usuario.forms import UsuarioForm, LoginForm, cadastroForm, CorridaForm
 from django.contrib.auth import authenticate, logout, login as meu_login
 from django.contrib.auth.decorators import login_required
 from usuario.models import Usuario
@@ -45,6 +45,10 @@ def dashboard(request):
 def cadastro(request):
     form = cadastroForm()
     return render(request, 'cadastro.html',{'form':form})
+  
+def corrida(request):
+    form = CorridaForm()
+    return render(request, 'corrida.html',{'form':form})
 
 def cadastro_validar(request):
     if request.method =='POST':

@@ -1,0 +1,7 @@
+<h1>Nova Corrida</h1>
+
+<form action="/corrida/" method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}<br />
+	<input type="submit" value="Validar" />
+</form>
